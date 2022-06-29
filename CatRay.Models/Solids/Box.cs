@@ -1,12 +1,12 @@
-﻿using System.Drawing;
-using CatRay.Models.CatRayMath;
+﻿using CatRay.Models.CatRayMath;
+using CatRay.Models.RenderData;
 using CatRay.Models.Solids.Abstract;
 
 namespace CatRay.Models.Solids
 {
     public class Box : ISolid
     {
-        public Box(Vector3 position, Vector3 scale, Color color, float reflectivity, float emission)
+        public Box(Vector3 position, Vector3 scale, CatRayColor color, float reflectivity, float emission)
         {
             Position = position;
             Scale = scale;
@@ -19,7 +19,7 @@ namespace CatRay.Models.Solids
 
         public Vector3 Scale { get; set; } = new();
 
-        public Color Color { get; set; } = Color.White;
+        public CatRayColor Color { get; set; } = new(1f, 1f, 1f);
 
         public float Reflectivity { get; set; } = 0f;
 
