@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{555065AF-D6F4-4498-B4EE-55D452ACE2F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatRay.Controllers", "CatRay.Controllers\CatRay.Controllers.csproj", "{79BAFF04-FF1E-4F75-91C6-D829B6662B7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatRay.Models", "CatRay.Models\CatRay.Models.csproj", "{87FDE01B-0AAF-44EC-ACF4-0E9AA1FC7A4F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79BAFF04-FF1E-4F75-91C6-D829B6662B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79BAFF04-FF1E-4F75-91C6-D829B6662B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79BAFF04-FF1E-4F75-91C6-D829B6662B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79BAFF04-FF1E-4F75-91C6-D829B6662B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87FDE01B-0AAF-44EC-ACF4-0E9AA1FC7A4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87FDE01B-0AAF-44EC-ACF4-0E9AA1FC7A4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87FDE01B-0AAF-44EC-ACF4-0E9AA1FC7A4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87FDE01B-0AAF-44EC-ACF4-0E9AA1FC7A4F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{79BAFF04-FF1E-4F75-91C6-D829B6662B7E} = {555065AF-D6F4-4498-B4EE-55D452ACE2F6}
+		{87FDE01B-0AAF-44EC-ACF4-0E9AA1FC7A4F} = {555065AF-D6F4-4498-B4EE-55D452ACE2F6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8153121A-6B94-45CC-9E09-B9176BC7E604}
+	EndGlobalSection
+EndGlobal
