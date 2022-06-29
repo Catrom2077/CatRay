@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Math\" />
+    <ProjectReference Include="..\CatRay.Models\CatRay.Models.csproj" />
   </ItemGroup>
 
 </Project>

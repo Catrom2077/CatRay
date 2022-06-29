@@ -5,7 +5,6 @@
         public Ray()
         {
             Origin = new Vector3().Zero;
-
             Direction = new Vector3().Zero;
         }
 
@@ -18,6 +17,9 @@
         public Vector3 Origin { get; private set; } = new Vector3().Zero;
 
         public Vector3 Direction { get; private set; } = new Vector3().Zero;
+
+        public Line ToLine(float lenght) =>
+            new(Origin, Origin.Add(Direction.Multiply(lenght)));
 
         public override string ToString() =>
             $"Origin: {Origin}, Direction: {Direction}";

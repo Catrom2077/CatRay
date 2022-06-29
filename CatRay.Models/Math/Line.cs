@@ -18,6 +18,9 @@
         
         public Vector3 PointB { get; private set; } = new Vector3().Zero;
 
+        public Ray ToRay() =>
+            new(PointA, PointB.Substruct(PointB).Normalize());
+
         public override string ToString() =>
             $"Point A: {PointA}, Point B: {PointB}";
     }

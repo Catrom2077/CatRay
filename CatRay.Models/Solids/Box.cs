@@ -24,5 +24,33 @@ namespace CatRay.Models.Solids
         public float Reflectivity { get; set; } = 0f;
 
         public float Emission { get; set; } = 0f;
+
+        public Vector3 GetNormal(Vector3 point)
+        {
+            float[] directions = point.Substruct(Position).ToArray();
+            float value = 0f;
+
+            for(int i = 0; i < directions.Length; i++)
+                if(value == 0f || value < System.Math.Abs(directions[i]))
+                    value = System.Math.Abs(directions[i]);
+
+            if (value == 0f)
+                return new Vector3().Zero;
+            else
+            {
+                for(int i = 0; i < directions.Length; i++)
+                {
+                    if (System.Math.Abs(directions[i]) == value)
+                    {
+                        float[] normals = new float[] { 0f, 0f, 0f };
+                        normals[i] = directions[i] > 0f ? 1f : -1f;
+
+                        return new Vector3(normals[0], normals[1], normals[2]);
+                    }
+                }
+            }
+
+            return new Vector3().Zero;
+        }
     }
 }

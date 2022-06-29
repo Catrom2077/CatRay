@@ -9,7 +9,7 @@ namespace CatRay.Models.Math
             Ray = ray;
             Solid = solid;
             HitPosition = hitPosition;
-            //Normal = solid.GetNormal(HitPosition);
+            Normal = solid.GetNormal(HitPosition);
         }
 
         public ISolid Solid { get; private set; }

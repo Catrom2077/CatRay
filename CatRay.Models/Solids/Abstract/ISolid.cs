@@ -11,5 +11,7 @@ namespace CatRay.Models.Solids.Abstract
         public float Reflectivity { get; set; }
 
         public float Emission { get; set; }
+
+        public Vector3 GetNormal(Vector3 point);
     }
 }
