@@ -1,4 +1,4 @@
-﻿using CatRay.Models.Math;
+﻿using CatRay.Models.CatRayMath;
 
 namespace CatRay.Models.Solids.Abstract
 {

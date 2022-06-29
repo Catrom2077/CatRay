@@ -1,4 +1,4 @@
-﻿namespace CatRay.Models.Math
+﻿namespace CatRay.Models.CatRayMath
 {
     public class Ray
     {

@@ -1,6 +1,6 @@
 ﻿using CatRay.Models.Solids.Abstract;
 
-namespace CatRay.Models.Math
+namespace CatRay.Models.CatRayMath
 {
     public class RayHit
     {

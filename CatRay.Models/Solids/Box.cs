@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using CatRay.Models.Math;
+using CatRay.Models.CatRayMath;
 using CatRay.Models.Solids.Abstract;
 
 namespace CatRay.Models.Solids
@@ -31,8 +31,8 @@ namespace CatRay.Models.Solids
             float value = 0f;
 
             for(int i = 0; i < directions.Length; i++)
-                if(value == 0f || value < System.Math.Abs(directions[i]))
-                    value = System.Math.Abs(directions[i]);
+                if(value == 0f || value < Math.Abs(directions[i]))
+                    value = Math.Abs(directions[i]);
 
             if (value == 0f)
                 return new Vector3().Zero;
@@ -40,7 +40,7 @@ namespace CatRay.Models.Solids
             {
                 for(int i = 0; i < directions.Length; i++)
                 {
-                    if (System.Math.Abs(directions[i]) == value)
+                    if (Math.Abs(directions[i]) == value)
                     {
                         float[] normals = new float[] { 0f, 0f, 0f };
                         normals[i] = directions[i] > 0f ? 1f : -1f;
