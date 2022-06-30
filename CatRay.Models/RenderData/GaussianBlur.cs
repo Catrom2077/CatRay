@@ -23,8 +23,8 @@
             };
         }
 
+        private PixelBuffer _pixelBuffer = new(0,0);
         private readonly float[] _kernel;
-        private readonly PixelBuffer _pixelBuffer = new(0,0);
         private readonly int _width = 0;
         private readonly int _height = 0;
 
@@ -46,11 +46,11 @@
                         {
                             PixelData pixel = _pixelBuffer.GetPixel(x + i, y);
                             if (pixel != null)
-                                blurredColor.AddSelf(pixel.GetColor().multiply(kernelMultiplier));
+                                blurredColor.AddSelf(pixel.Color.Multiply(kernelMultiplier));
                         }
                     }
 
-                    result.SetPixel(x, y, new(blurredColor, originalPixel.GetDepth(), originalPixel.GetEmission()));
+                    result.SetPixel(x, y, new(blurredColor, originalPixel.Depth, originalPixel.Emission));
                 }
             }
             _pixelBuffer = result;
