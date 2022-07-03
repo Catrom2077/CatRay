@@ -38,11 +38,11 @@ namespace CatRay.Models.RenderData
         public Color ToColor() =>
             Color.FromArgb(GetRGB());
 
-        private static float Lerp(float a, float b, float t) =>
-            a + t * (b - a);
+        private static float Lerp(float a, float b, float time) =>
+            a + time * (b - a);
 
-        public static CatRayColor Lerp(CatRayColor a, CatRayColor b, float t) =>
-            new(Lerp(a.Red, b.Red, t), Lerp(a.Green, b.Green, t), Lerp(a.Blue, b.Blue, t));
+        public static CatRayColor Lerp(CatRayColor a, CatRayColor b, float time) =>
+            new(Lerp(a.Red, b.Red, time), Lerp(a.Green, b.Green, time), Lerp(a.Blue, b.Blue, time));
 
         public int GetRGB()
         {

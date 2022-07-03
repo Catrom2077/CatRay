@@ -56,8 +56,8 @@
         public static float Distance(Vector3 a, Vector3 b) =>
             (float)Math.Sqrt(Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2) + Math.Pow(a.Z - b.Z, 2));
 
-        public static Vector3 Lerp(Vector3 left, Vector3 right, float amount) =>
-            left.Add(right.Substruct(left).Multiply(amount));
+        public static Vector3 Lerp(Vector3 a, Vector3 b, float time) =>
+            a.Add(b.Substruct(a).Multiply(time));
 
         public Vector3 Rotate(float yaw, float pitch)
         {
