@@ -29,13 +29,13 @@
         public Vector3 Add(Vector3 vector) =>
             new(X + vector.X, Y + vector.Y, Z + vector.Z);
 
-        public Vector3 Substruct(Vector3 vector) =>
+        public Vector3 Substract(Vector3 vector) =>
             new(X - vector.X, Y - vector.Y, Z - vector.Z);
 
         public Vector3 Multiply(float scale) =>
             new(X * scale, Y * scale, Z * scale);
 
-        public Vector3 Muliply(Vector3 vector) =>
+        public Vector3 Multiply(Vector3 vector) =>
             new(X * vector.X, Y * vector.Y, Z * vector.Z);
 
         public Vector3 Divide(Vector3 vector) =>
@@ -57,7 +57,7 @@
             (float)Math.Sqrt(Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2) + Math.Pow(a.Z - b.Z, 2));
 
         public static Vector3 Lerp(Vector3 a, Vector3 b, float time) =>
-            a.Add(b.Substruct(a).Multiply(time));
+            a.Add(b.Substract(a).Multiply(time));
 
         public Vector3 Rotate(float yaw, float pitch)
         {

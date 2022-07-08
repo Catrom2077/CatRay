@@ -13,6 +13,10 @@ namespace CatRay.Models.Solids
             Color = color;
             Reflectivity = reflectivity;
             Emission = emission;
+
+            Max = Position.Add(Scale.Multiply(0.5f));
+            Min = Position.Substract(scale.Multiply(0.5f));
+
         }
 
         public Vector3 Position { get; set; } = new();
@@ -25,9 +29,12 @@ namespace CatRay.Models.Solids
 
         public float Emission { get; set; } = 0f;
 
+        public Vector3 Min { get; private set; } = new();
+        public Vector3 Max { get; private set; } = new();
+
         public Vector3 GetNormal(Vector3 point)
         {
-            float[] directions = point.Substruct(Position).ToArray();
+            float[] directions = point.Substract(Position).ToArray();
             float value = 0f;
 
             for(int i = 0; i < directions.Length; i++)
@@ -51,6 +58,50 @@ namespace CatRay.Models.Solids
             }
 
             return new Vector3().Zero;
+        }
+
+        public Vector3 CalculateIntersection(Ray ray)
+        {
+            float t1, t2, tnear = float.NegativeInfinity, tfar = float.PositiveInfinity, temp;
+
+            bool intersectFlag = true;
+            
+            float[] rayDirection = ray.Direction.ToArray();
+            float[] rayOrigin = ray.Origin.ToArray();
+            float[] b1 = Min.ToArray();
+            float[] b2 = Max.ToArray();
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (rayDirection[i] == 0)
+                {
+                    if (rayOrigin[i] < b1[i] || rayOrigin[i] > b2[i])
+                        intersectFlag = false;
+                }
+                else
+                {
+                    t1 = (b1[i] - rayOrigin[i]) / rayDirection[i];
+                    t2 = (b2[i] - rayOrigin[i]) / rayDirection[i];
+                    if (t1 > t2)
+                    {
+                        temp = t1;
+                        t1 = t2;
+                        t2 = temp;
+                    }
+                    if (t1 > tnear)
+                        tnear = t1;
+                    if (t2 < tfar)
+                        tfar = t2;
+                    if (tnear > tfar)
+                        intersectFlag = false;
+                    if (tfar < 0)
+                        intersectFlag = false;
+                }
+            }
+            if (intersectFlag)
+                return ray.Origin.Add(ray.Direction.Multiply(tnear));
+            else
+                return new Vector3().Zero;
         }
     }
 }

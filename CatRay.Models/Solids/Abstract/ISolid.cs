@@ -13,5 +13,7 @@ namespace CatRay.Models.Solids.Abstract
         public float Emission { get; set; }
 
         public Vector3 GetNormal(Vector3 point);
+
+        public Vector3 CalculateIntersection(Ray ray);
     }
 }
