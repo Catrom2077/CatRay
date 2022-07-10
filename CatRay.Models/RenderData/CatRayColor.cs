@@ -7,10 +7,10 @@ namespace CatRay.Models.RenderData
         public CatRayColor(float red, float green, float blue)
         {
             if (red > 1f || green > 1f || blue > 1f)
-                throw new ArgumentOutOfRangeException("Colors parameters outside of the range");
+                throw new("Colors parameters outside of the range");
 
             if(red < 0f || green < 0f || blue < 0f)
-                throw new ArgumentOutOfRangeException("Colors parameters outside of the range");
+                throw new("Colors parameters outside of the range");
 
             Red = red;
             Green = green;
@@ -94,7 +94,7 @@ namespace CatRay.Models.RenderData
         public static CatRayColor Average(List<CatRayColor> colors, List<float> weights)
         {
             if (colors.Count != weights.Count)
-                throw new ArgumentOutOfRangeException("Specified color count does not match weight count");
+                throw new("Specified color count does not match weight count");
 
             float rSum = 0;
             float gSum = 0;

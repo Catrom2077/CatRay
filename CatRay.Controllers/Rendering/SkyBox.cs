@@ -1,5 +1,6 @@
 ﻿using CatRay.Models.CatRayMath;
 using CatRay.Models.RenderData;
+using System.Drawing.Imaging;
 using System.Drawing;
 
 namespace CatRay.Controllers.Rendering
@@ -49,8 +50,16 @@ namespace CatRay.Controllers.Rendering
 
             try
             {
-                //GetRGB():
-                return CatRayColor.RED;
+                byte[,,] rgbBytes = BitmapToByteRGB(_skybox);
+                
+                int red = rgbBytes.GetLength(0);
+                int green = rgbBytes.GetLength(1);
+                int blue = rgbBytes.GetLength(2);
+
+                Color color = Color.FromArgb(red, green, blue);
+                int result = color.ToArgb();
+
+                return CatRayColor.FromInt(result);
             }
             catch (Exception exception)
             {
@@ -59,10 +68,39 @@ namespace CatRay.Controllers.Rendering
             }
         }
 
-        //TODO: замінить на алгоритм пошуку пікселя через оперативку
-        private int GetRGB(Bitmap skybox)
+        public unsafe byte[,,] BitmapToByteRGB(Bitmap bitmap)
         {
-            throw new NotImplementedException();
+            int width = bitmap.Width;
+            int height = bitmap.Height;
+
+            byte[,,] result = new byte[3, height, width];
+
+            BitmapData bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+
+            try
+            {
+                byte* curpos;
+                fixed (byte* _res = result)
+                {
+                    byte* red = _res, green = _res + width * height, blue = _res + 2 * width * height;
+                    for (int i = 0; i < height; i++)
+                    {
+                        curpos = ((byte*)bitmapData.Scan0) + i * bitmapData.Stride;
+
+                        for (int j = 0; j < width; j++)
+                        {
+                            *blue = *(curpos++); ++blue;
+                            *green = *(curpos++); ++green;
+                            *red = *(curpos++); ++red;
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                bitmap.UnlockBits(bitmapData);
+            }
+            return result;
         }
 
         public bool IsLoaded() => _isLoaded;
